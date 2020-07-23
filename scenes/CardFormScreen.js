@@ -1,16 +1,8 @@
-import React, { PureComponent } from "react";
-import { View, Text, StyleSheet } from "react-native";
-
-import Button from './components/Button'
-
+import React, { PureComponent } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 import stripe from 'tipsi-stripe'
-
-
-stripe.setOptions({
-  publishableKey: 
-    'pk_test_51Gs7UACLGzJRCoa2seYvcmq6HnjfLPAONrKv5e97UT1UEUwEhIS7l1JBBW2Tnq7sr8Ki1EBgknPzpclGD7AG2NED00p7Qsk0g2'
-})
-
+import Button from '../components/Button'
+import testID from '../utils/testID'
 
 export default class CardFormScreen extends PureComponent {
   static title = 'Card Form'
@@ -62,10 +54,11 @@ export default class CardFormScreen extends PureComponent {
           text="Enter you card and pay"
           loading={loading}
           onPress={this.handleCardPayPress}
+          {...testID('cardFormButton')}
         />
         <View
           style={styles.token}
-          >
+          {...testID('cardFormToken')}>
           {token &&
             <Text style={styles.instruction}>
               Token: {token.tokenId}
